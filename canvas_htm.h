@@ -2,7 +2,61 @@ static const char canvas_htm[] PROGMEM = "<!-- Author : Mudassar Tamboli -->\n"\
 "\n"\
 "<!DOCTYPE html>\n"\
 "<html>\n"\
+"<head>\n"\
 "<title> ESP32-OV7670 - Websocket Demo By Mudassar Tamboli </title>\n"\
+"<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'> \n"\
+"        <style> \n"\
+"        p.cnt , button.btn {\n"\
+"            margin: 0;\n"\
+"            padding: 0;\n"\
+"        }\n"\
+"        .btn { \n"\
+"            padding: 20px; \n"\
+"            color: white; \n"\
+"            width: 80px; \n"\
+"            height: 80px; \n"\
+"            text-align: center; \n"\
+"            vertical-align: middle; \n"\
+"            } \n"\
+"        .arrow { \n"\
+"            background-color: dodgerblue; \n"\
+"            font-size: 20pt; \n"\
+"            font-weight: bolder; \n"\
+"            } \n"\
+"        .stop { \n"\
+"            background-color: Red; \n"\
+"            font-size: 16pt; \n"\
+"            font-weight: bold; \n"\
+"            padding: 5px !important;\n"\
+"            margin-top: 3px !important;\n"\
+"            margin-bottom: 3px !important;\n"\
+"            }\n"\
+"        button.btn.ledA {\n"\
+"            margin-left:20px;\n"\
+"            background-color: Lime ;\n"\
+"            height: 40px;\n"\
+"            width: 120px;\n"\
+"            font-size: 14pt;\n"\
+"            padding: 4px;\n"\
+"            }\n"\
+"        button.btn.ledB {\n"\
+"            background-color: DarkGreen; \n"\
+"            height: 40px;\n"\
+"            width: 120px;\n"\
+"            font-size: 12pt;\n"\
+"            padding: 4px;\n"\
+"            } \n"\
+"        .cnt {\n"\
+"            align-content: center;\n"\
+"            text-align: center;\n"\
+"            }\n"\
+"        .set-center {\n"\
+"            margin-left: auto;\n"\
+"            margin-right: auto;\n"\
+"            width: 285px;\n"\
+"            margin-top: 15px;\n"\
+"            }\n"\
+"        </style> \n"\
 "<script type = \"text/javascript\">\n"\
 "    var ws = null;\n"\
 "    var r = 0;\n"\
@@ -222,7 +276,13 @@ static const char canvas_htm[] PROGMEM = "<!-- Author : Mudassar Tamboli -->\n"\
 "    ws.send(canvasid);    \n"\
 "}\n"\
 "\n"\
+"            var xhttp = new XMLHttpRequest(); \n"\
+"            function getsend(arg) { \n"\
+"                xhttp.open('GET', arg +'?' + new Date().getTime(), true); \n"\
+"                xhttp.send() \n"\
+"            } \n"\
 "</script>\n"\
+"</head>\n"\
 "\n"\
 "<body onload=\"onloadinit()\">\n"\
 "\n"\
@@ -239,6 +299,21 @@ static const char canvas_htm[] PROGMEM = "<!-- Author : Mudassar Tamboli -->\n"\
 "    background-color: #FFFFFF;\" id=\"connecting\">Connecting Camera ...\n"\
 "</div>\n"\
 "\n"\
+"        <p class='cnt'> \n"\
+"            <button class='btn arrow' onmousedown=getsend('go')> &uarr; </button> \n"\
+"        </p> \n"\
+"        <p class='cnt'> \n"\
+"            <button class='btn arrow' onmousedown=getsend('left')> &larr; </button> \n"\
+"            <button class='btn stop' onmousedown=getsend('stop')> STOP </button> \n"\
+"            <button class='btn arrow' onmousedown=getsend('right')> &rarr; </button> \n"\
+"        </p> \n"\
+"        <p class='cnt'> \n"\
+"            <button class='btn arrow' onmousedown=getsend('back')> &darr; </button> \n"\
+"        </p> \n"\
+"        <div class='set-center'> \n"\
+"            <button class='btn ledA' onmousedown=getsend('ledon')> Car Test </button> \n"\
+"            <button class='btn ledB' onmousedown=getsend('ledoff')> Car App Info </button> \n"\
+"        </div> \n"\
 "<center> <h1> ESP32-OV7670 Websocket Video Camera </h1> </center>\n"\
 "\n"\
 "\n"\
